@@ -1,6 +1,6 @@
 package com.company;
 
-public class Moto {
+public class Moto  extends Veiculo{
     public Moto(){
 
     }

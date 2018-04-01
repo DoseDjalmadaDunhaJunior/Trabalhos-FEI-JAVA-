@@ -1,6 +1,6 @@
 package com.company;
 
-public class Caminhao {
+public class Caminhao  extends Veiculo{
     public Caminhao(){
 
     }
