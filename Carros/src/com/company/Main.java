@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
+        /*
         ArrayList <Carro> car = new ArrayList<>();
         int x,y;
         Veiculo aux = new Veiculo();
@@ -14,6 +15,7 @@ public class Main {
             car.add(new Carro(x,y));
 
         }
+        */
         Mundo a = new Mundo();
         a.desenhaMundo();
     }
