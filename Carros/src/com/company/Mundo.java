@@ -2,30 +2,30 @@ package com.company;
 import java.awt.Color;
 
 public class Mundo {
-    public void desenhaMundo(/*Carro uno[], Caminhao bino[], Moto boy[]*/) {
+    public void desenhaMundo(int vet[][]) {
         for (int i = 0; i < tamX; i++) {
             for (int j = 0; j < tamY; j++) {
                 //borda
-                if (mapa[i][j] == 9 || mapa[i][j] == 8 || mapa[i][j] == 7) {
+                if (vet[i][j] == 9 || vet[i][j] == 8 || vet[i][j] == 7) {
                     //caminhoes
-                    if (mapa[i][j] == 9) {
+                    if (vet[i][j] == 9) {
                         System.out.print("HHD");
                     }
                     //carros
-                    if (mapa[i][j] == 8) {
+                    if (vet[i][j] == 8) {
                         System.out.print("EH");
                     }
                     //motos
-                    if (mapa[i][j] == 7) {
+                    if (vet[i][j] == 7) {
                         System.out.print("III");
                     }
-                } else if (mapa[i][j] == 1 || mapa[i][j] == 2) {
-                    if (mapa[i][j] == 1) {
+                } else if (vet[i][j] == 1 || vet[i][j] == 2) {
+                    if (vet[i][j] == 1) {
                         System.out.print("ø");
                         continue;
                     }
                     //fabricas
-                    if (mapa[i][j] == 2) {
+                    if (vet[i][j] == 2) {
                         System.out.print("X");
                     }
                 } else {
@@ -54,7 +54,7 @@ public class Mundo {
             }
         }
         */
-    public void populaMapa() {
+    public Mundo() {
        int mapaAux[][] =
                 {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                 {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -87,6 +87,10 @@ public class Mundo {
                 {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
     mapa = mapaAux;
+    }
+
+    public int[][] getMapa() {
+        return mapa;
     }
 
     //[30][60]

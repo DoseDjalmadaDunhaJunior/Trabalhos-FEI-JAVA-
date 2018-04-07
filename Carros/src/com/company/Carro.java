@@ -1,9 +1,10 @@
 package com.company;
 
 public class Carro extends Veiculo{
-    public Carro(int x, int y){
-    super(0,2,"uno");
-    forcaMove();
+    public Carro(int x, int y) {
+
+        super(x, y, "uno");
+        forcaMove();
     }
 
     public void forcaMove(){
