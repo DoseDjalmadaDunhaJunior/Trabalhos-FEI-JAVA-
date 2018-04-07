@@ -14,14 +14,16 @@ public class Main {
         int x, y;
         Veiculo aux = new Veiculo();
         //System.out.println(vet[0][0]);
-        for (int i = 0; i < 1; i++) {
-            //x = aux.aleatorio();
-            //y = aux.aleatorio();
-            System.out.println(a.getMapa()[0][0]);
-            car.add(new Carro(0, 0));
-            System.out.println(a.getMapa()[0][0]);
+        for (int i = 0; i < 2; i++) {
+            x = aux.aleatorio();
+            y = aux.aleatorio();
+            System.out.println(a.getMapa()[x][y]);
+            car.add(new Carro(x, y));
         }
 
+        for (int i = 0; i < car.size(); i++) {
+            a.mudaMundo(car.get(i).getx(),car.get(i).gety(),8);
+        }
         //a.populaMapa();
         System.out.println(a.getMapa()[0][0]);
         a.desenhaMundo(vet);

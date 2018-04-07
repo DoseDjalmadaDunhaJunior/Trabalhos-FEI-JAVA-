@@ -9,6 +9,7 @@ public class Carro extends Veiculo{
 
     public void forcaMove(){
         super.move();
+        System.out.println(super.getBug(0,0));
     }
 
     public int posicao(){
@@ -17,5 +18,20 @@ public class Carro extends Veiculo{
         return x;
     }
 
+    public int gety(){
+        return getY();
+    }
+
+    public int getx(){
+        return getX();
+    }
+
+    public void imprime(){
+        super.imprimeMapa();
+    }
+
+    public int oito(){
+        return 8;
+    }
     private int numPessoa;
 }

@@ -44,6 +44,20 @@ public class Veiculo extends Mundo{
         return y;
     }
 
+    public int getX(){
+        return x;
+    }
+
+    public int getBug(int x,int y){
+        return super.getMapa()[x][y];
+    }
+
+    public void imprimeMapa(){
+        int[][] vet = new int[30][60];
+        vet = super.getMapa();
+        super.desenhaMundo(vet);
+    }
+
     private int y;
     private int x;
     private int velocidade;
