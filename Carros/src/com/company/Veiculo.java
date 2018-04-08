@@ -33,13 +33,6 @@ public class Veiculo extends Mundo{
         super.mudaMundo(x,y,n);
     }
 
-    public int aleatorio() {
-        Random meu = new Random();
-        int x;
-        x = meu.nextInt(30);
-        return x;
-    }
-
     public int getY(){
         return y;
     }
