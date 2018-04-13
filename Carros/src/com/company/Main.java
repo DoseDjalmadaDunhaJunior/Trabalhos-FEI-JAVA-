@@ -15,6 +15,7 @@ public class Main {
         vet = a.getMapa();
         Veiculo aux = new Veiculo();
         //int k = 0;
+        //
         int cont = 0;
         while (true) {
             try {
