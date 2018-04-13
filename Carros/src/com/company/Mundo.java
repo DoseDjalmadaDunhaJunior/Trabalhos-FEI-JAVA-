@@ -44,7 +44,7 @@ public class Mundo {
                 if (vet[i][j] == 9 || vet[i][j] == 8 || vet[i][j] == 7) {
                     //caminhoes
                     if (vet[i][j] == 9) {
-                        System.out.print("HHD");
+                        System.out.print(" ");
                     }
                     //carros
                     if (vet[i][j] == 8) {

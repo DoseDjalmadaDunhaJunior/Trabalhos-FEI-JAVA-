@@ -10,10 +10,19 @@ public class Veiculo extends Mundo{
         cor = null;
     }
 
-    public Veiculo(int xx,int yy, String modelo){
+    public Veiculo(int xx,int yy, String modelo) {
         x = xx;
         y = yy;
         cor = modelo;
+        if (cor == "uno") {
+            velocidade = 2;
+        } else if (cor == "moto") {
+            velocidade = 3;
+        } else if (cor == "zero") {
+            velocidade = 0;
+        } else {
+            velocidade = 1;
+        }
     }
 
     public void move() {
@@ -39,6 +48,10 @@ public class Veiculo extends Mundo{
 
     public int getX(){
         return x;
+    }
+
+    public int getVelocidade(){
+        return velocidade;
     }
 
     public int getBug(int x,int y){
