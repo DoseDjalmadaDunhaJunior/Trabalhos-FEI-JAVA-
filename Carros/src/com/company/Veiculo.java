@@ -1,7 +1,7 @@
 package com.company;
 import java.util.Random;
 
-public class Veiculo extends Mundo{
+public class Veiculo{
     public Veiculo(){
         x = 0;
         y = 0;
@@ -10,9 +10,10 @@ public class Veiculo extends Mundo{
         cor = null;
     }
 
-    public Veiculo(int xx,int yy, String modelo) {
+    public Veiculo(int xx,int yy, String modelo,int aux) {
         x = xx;
         y = yy;
+        posicaoAntiga = aux;
         cor = modelo;
         if (cor == "uno") {
             velocidade = 2;
@@ -25,7 +26,7 @@ public class Veiculo extends Mundo{
         }
     }
 
-    public void move() {
+    public void id() {
         int n;
         if(cor == "uno"){
             n = 8;
@@ -39,7 +40,6 @@ public class Veiculo extends Mundo{
         else{
             n = 0;
         }
-        super.mudaMundo(x,y,n);
     }
 
     public int getY(){
@@ -50,20 +50,33 @@ public class Veiculo extends Mundo{
         return x;
     }
 
-    public int getVelocidade(){
-        return velocidade;
+    public void setX(){
+        Random meu = new Random();
+        x = meu.nextInt(30);
     }
 
-    public int getBug(int x,int y){
-        return super.getMapa()[x][y];
+    public void setY(){
+        Random meu = new Random();
+        y = meu.nextInt(60);
     }
 
-    public void imprimeMapa(){
-        int[][] vet = new int[30][60];
-        vet = super.getMapa();
-        super.desenhaMundo(vet);
+    public void setX(int p){
+        x = p;
     }
 
+    public void setY(int p){
+        y = p;
+    }
+
+    public void setPosicaoAntiga(int pn){
+        posicaoAntiga = pn;
+    }
+
+    public int getPosicaoAntiga(){
+    return posicaoAntiga;
+    }
+
+    private int posicaoAntiga;
     private int y;
     private int x;
     private int velocidade;

@@ -6,42 +6,32 @@ public class Main {
 
 
     public static void main(String[] args) {
-        Random meu = new Random();
-        ArrayList<Carro> car = new ArrayList<>();
-        ArrayList<Moto> boy = new ArrayList<>();
-        ArrayList<Caminhao> bino = new ArrayList<>();
         Mundo a = new Mundo();
-        int[][] vet;// = new int[30][60];
-        vet = a.getMapa();
-        Veiculo aux = new Veiculo();
+        Veiculo b = new Veiculo();
         //int k = 0;
         //
         int cont = 0;
         while (true) {
             try {
+                a.start();
                 Thread.sleep(500);
             } catch (InterruptedException ex) {
-                a.desenhaMundo(vet);
+                a.start();
+                //a.desenhaMundo(vet);
                 a.zeraMundo();
                 System.out.println("matou " + cont + " veiculos");
             }
-            //while (k < 2) {
-            for (int i = 0; i < 30; i++) {
-                //System.out.println(a.getMapa()[x][y]);
-                car.add(new Carro(meu.nextInt(30), meu.nextInt(60)));
-                boy.add(new Moto(meu.nextInt(30), meu.nextInt(60)));
-                bino.add(new Caminhao(meu.nextInt(30), meu.nextInt(60)));
-            }
 
+/*
             int max,min,med;
-                if(car.size() >= bino.size()){
-                    max = car.size();
-                    min = bino.size();
-                }
-                else{
-                    min = car.size();
-                    max = bino.size();
-                }
+            if(car.size() >= bino.size()){
+                max = car.size();
+                min = bino.size();
+            }
+            else{
+                min = car.size();
+                max = bino.size();
+            }
             for (int i = 0; i < max; i++) {
                 for (int j = 0; j < min; j++) {
                     if (i == j) {
@@ -101,20 +91,8 @@ public class Main {
                 }
             }
 
-            for (int i = 0; i < car.size(); i++) {
-/*
-            a.mudaMundo(car.get(i).getx(),car.get(i).gety(),8);
-            a.mudaMundo(bino.get(i).getx(),bino.get(i).gety(),9);
-            a.mudaMundo(boy.get(i).getx(),boy.get(i).gety(),7);
 */
-                a.experienciaMudaMundo(boy.get(i), car.get(i), bino.get(i));
-            }
-            //System.out.println(a.getMapa()[0][0]);
-            //k++;
 
-            a.desenhaMundo(vet);
-            a.zeraMundo();
-            System.out.println("matou " + cont + " veiculos");
             //}
             // a.desenhaMundo(vet);
         }

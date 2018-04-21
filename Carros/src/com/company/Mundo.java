@@ -1,8 +1,59 @@
 package com.company;
 import java.awt.Color;
+import java.util.ArrayList;
 
 public class Mundo {
     public Mundo() {
+        zera();
+        primeiros();
+        desenhaMundo(mapa);
+    }
+
+    public void start(){
+        //numeros();
+        zera();
+        colisao();
+        geraVeiculos();
+        mudaMundo();
+        desenhaMundo(mapa);
+
+    }
+
+    public void zera(){
+        /*
+        int mapaAux[][] =
+                {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                        {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
+        mapa = mapaAux;
+        */
         int mapaAux[][] =
                 {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                         {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -35,35 +86,54 @@ public class Mundo {
                         {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
         mapa = mapaAux;
+
+    }
+
+    public void primeiros(){
+        for(int i = 0; i < 10; i++) {
+            but.setX();
+            but.setY();
+            uno[i] = new Carro(but.getX(), but.getY());
+            but.setX();
+            but.setY();
+            boy[i] = new Moto(but.getX(),but.getY());
+            but.setX();
+            but.setY();
+            bino[i] = new Caminhao(but.getX(),but.getY());
+        }
+        tamBino = 10;
+        tamUno = 10;
+        tamBoy = 10;
     }
 
     public void desenhaMundo(int vet[][]) {
+
         for (int i = 0; i < tamX; i++) {
             for (int j = 0; j < tamY; j++) {
-                //borda
+                ///borda
                 if (vet[i][j] == 9 || vet[i][j] == 8 || vet[i][j] == 7) {
-                    //caminhoes
+                    ///caminhoes
                     if (vet[i][j] == 9) {
-                        System.out.print(" ");
+                        System.out.print("R");
                     }
-                    //carros
+                    ///carros
                     if (vet[i][j] == 8) {
-                        System.out.print("EH");
+                        System.out.print("C");
                     }
-                    //motos
+                    ///motos
                     if (vet[i][j] == 7) {
-                        System.out.print("III");
+                        System.out.print("M");
                     }
                 } else if (vet[i][j] == 1 || vet[i][j] == 2) {
                     if (vet[i][j] == 1) {
                         System.out.print("ø");
                     }
-                    //fabricas
+                    ///fabricas
                     if (vet[i][j] == 2) {
                         System.out.print("X");
                     }
                 } else {
-                    //espaco em branco
+                    ///espaco em branco
                     System.out.print(" ");
                 }
             }
@@ -71,31 +141,34 @@ public class Mundo {
         }
     }
 
-    public void mudaMundo(int poX, int poY, int n) {
-        mapa[poX][poY] = n;
-    }
-
-    public void experienciaMudaMundo(Moto mot, Carro car, Caminhao bino){
-        //a.mudaMundo(car.get(i).getx(),car.get(i).gety(),8);
-        //a.mudaMundo(bino.get(i).getx(),bino.get(i).gety(),9);
-        //a.mudaMundo(boy.get(i).getx(),boy.get(i).gety(),7);
-        mapa[mot.getX()][mot.getY()] = 7;
-        mapa[car.getX()][car.getY()] = 8;
-        mapa[bino.getX()][bino.getY()] = 9;
-
-    }
-
-    /*
-    for (int i = 0; i < tamX; i++) {
-        for (int j = 0; j < tamY; j++) {
-            if((i == 0) || (j == 0)){
-                mapa[i][j] = 1;
-            }
-              else if((i > 5 && i < 10) && (j > 3 && j < 7)){
-                mapa[i][j] = 2;
-            }
+    public void mudaMundo() {
+        int c,cam,m;
+        c = tamUno;
+        System.out.println("tamanho caro " + c);
+        for (int i = 0; i < tamUno-1; i++){
+            System.out.println("x carro " + uno[i].getX());
+            System.out.println("y carro " + uno[i].getY());
+            uno[i].move(uno[i]);
+            mapa[uno[i].getX()][uno[i].getY()] = 8;
         }
-        */
+        m = tamBoy;
+        System.out.println("tamanho moto " + m);
+        for (int i = 0; i < tamBoy-1; i++){
+            System.out.println("x moto " + boy[i].getX());
+            System.out.println("y moto " + boy[i].getY());
+            boy[i].move(boy[i]);
+            mapa[boy[i].getX()][boy[i].getY()] = 7;
+        }
+        cam = tamBino;
+        System.out.println("tamanho caminhao " + cam);
+        for (int i = 0; i < tamBino-1; i++){
+            System.out.println("x caminhao " + bino[i].getX());
+            System.out.println("y caminhao " + bino[i].getY());
+            bino[i].move(bino[i]);
+            mapa[bino[i].getX()][bino[i].getY()] = 9;
+        }
+
+    }
 
     public void zeraMundo(){
         int mapaAux[][] =
@@ -132,14 +205,259 @@ public class Mundo {
         mapa = mapaAux;
     }
 
-    public int[][] getMapa() {
-        return mapa;
+    public void colisao() {
+        bateCarro();
+        bateCaminhao();
+        bateMoto();
     }
 
-    //[30][60]
+    public void bateCarro() {
+        int min, max, debito = 0;
+        if ((tamUno-1) > (tamBino-1)) {
+            min = (tamUno-1);
+            max = (tamBino-1);
+        } else {
+            min = (tamBino-1);
+            max = (tamUno-1);
+        }
+        //carro batendo em caminhao
+        for (int i = 0; i < min; i++) {
+            for (int j = 0; j < max; j++) {
+                System.out.println("carro tam " + tamUno);
+                System.out.println("caminhao tam " + tamBino);
+                System.out.println("carro x " + uno[i].getX());
+                System.out.println("carro y " + uno[i].getY());
+                System.out.println("caminhao x " + bino[i].getX());
+                System.out.println("caminhao y " + bino[i].getY());
+                if ((uno[i].getX() == bino[j].getX()) && (uno[i].getX() == bino[j].getY())) {
+                    Carro a, b;
+                    a = uno[i];
+                    b = uno[(tamUno - 1)];
+                    uno[i] = b;
+                    uno[(tamUno - 1)] = a;
+                    debito++;
+                }
+            }
+        }
+        tamUno = tamUno - debito;
+
+        //carro -> moto
+        if ((tamUno-1) > (tamBoy-1)) {
+            min = tamUno;
+            max = tamBoy;
+        } else {
+            min = tamBoy;
+            max = tamUno;
+        }
+        debito = 0;
+        for (int i = 0; i < min; i++) {
+            for (int j = 0; j < max; j++) {
+                if ((uno[j].getX() == boy[i].getX()) && (uno[j].getX() == boy[i].getY())) {
+                    Moto a, b;
+                    a = boy[i];
+                    b = boy[(tamBoy - 1)];
+                    boy[i] = b;
+                    boy[(tamBoy - 1)] = a;
+                    debito++;
+                }
+            }
+        }
+
+        tamBoy = tamBoy - debito;
+        //carro -> carro
+        min = tamUno;
+        max = min;
+        debito = 0;
+        for (int i = 0; i < min; i++) {
+            for (int j = 0; j < max; j++) {
+                if (i == j) {
+
+                } else {
+                    if ((uno[i].getX() == uno[j].getX()) && (uno[i].getX() == uno[j].getY())) {
+                        Carro a1, a2, b1, b2;
+                        a1 = uno[i];
+                        a2 = uno[(tamUno - 1)];
+                        uno[i] = a2;
+                        uno[(tamUno - 1)] = a1;
+                        b1 = uno[j];
+                        b2 = uno[(tamUno - 2)];
+                        uno[j] = b2;
+                        uno[(tamUno - 2)] = b1;
+                        debito+=2;
+                    }
+                }
+            }
+        }
+        tamUno = tamUno - debito;
+    }
+
+    public void bateCaminhao() {
+        int min, max, debito = 0;
+        //caminhao -> moto
+        if (tamBino > tamBoy) {
+            min = tamBino;
+            max = tamBoy;
+        } else {
+            min = tamBoy;
+            max = tamBino;
+        }
+        for (int i = 0; i < min; i++) {
+            for (int j = 0; j < max; j++) {
+                if ((bino[j].getX() == boy[i].getX()) && (bino[j].getX() == boy[i].getY())) {
+                    Moto a, b;
+                    a = boy[i];
+                    b = boy[(tamBoy - 1)];
+                    boy[i] = b;
+                    boy[(tamBoy - 1)] = a;
+                    debito++;
+                }
+            }
+        }
+
+        tamBoy = tamBoy - debito;
+        //caminhao -> caminhao
+        min = tamBino;
+        max = min;
+        debito = 0;
+        for (int i = 0; i < min; i++) {
+            for (int j = 0; j < max; j++) {
+                if (i == j) {
+
+                } else {
+                    if ((bino[i].getX() == bino[j].getX()) && (bino[i].getX() == bino[j].getY())) {
+                        Caminhao a1, a2, b1, b2;
+                        a1 = bino[i];
+                        a2 = bino[(tamBino - 1)];
+                        bino[i] = a2;
+                        bino[(tamBino - 1)] = a1;
+                        b1 = bino[j];
+                        b2 = bino[(tamBino - 2)];
+                        bino[j] = b2;
+                        bino[(tamBino - 2)] = b1;
+                        debito+=2;
+                    }
+                }
+            }
+        }
+        tamBino = tamBino - debito;
+    }
+
+    public void bateMoto(){
+        int debito = 0;
+        for (int i = 0; i < tamBoy; i++) {
+            for (int j = 0; j < tamBoy; j++) {
+                if (i == j) {
+
+                } else {
+                    if ((boy[i].getX() == boy[j].getX()) && (boy[i].getX() == boy[j].getY())) {
+                        Moto a1, a2, b1, b2;
+                        a1 = boy[i];
+                        a2 = boy[(tamBoy - 1)];
+                        boy[i] = a2;
+                        boy[(tamBoy - 1)] = a1;
+                        b1 = boy[j];
+                        b2 = boy[(tamBoy - 2)];
+                        boy[j] = b2;
+                        boy[(tamBoy - 2)] = b1;
+                        debito+=2;
+                    }
+                }
+            }
+        }
+        tamBoy = tamBoy - debito;
+    }
+
+    public void geraVeiculos() {
+        geraMoto();
+        geraCarro();
+        geraCaminhao();
+    }
+
+    public void geraCarro(){
+        int x,y,debito = 0;
+        for (int i = 0; i < tamUno; i++){
+            x = uno[i].getX();
+            y = uno[i].getY();
+            if(mapa[x][y] == 2){
+                if(uno[i].getPosicaoAntiga() == 0){
+                    but.setX();
+                    but.setY();
+                    uno[tamUno] = new Carro(but.getX(), but.getY());
+                    uno[i].setPosicaoAntiga(2);
+                    debito++;
+                }
+            }
+            else{
+                uno[i].setPosicaoAntiga(mapa[uno[i].getX()][uno[i].getY()]);
+            }
+        }
+        tamUno = tamUno + debito;
+    }
+
+    public void geraMoto(){
+        int x,y,debito = 0;
+        for (int i = 0; i < tamBoy; i++){
+            x = boy[i].getX();
+            y = boy[i].getY();
+            if(mapa[x][y] == 2){
+                if(boy[i].getPosicaoAntiga() == 0){
+                    but.setX();
+                    but.setY();
+                    boy[tamBoy] = new Moto(but.getX(), but.getY());
+                    boy[i].setPosicaoAntiga(2);
+                    debito++;
+                }
+            }
+            else{
+                boy[i].setPosicaoAntiga(mapa[boy[i].getX()][boy[i].getY()]);
+            }
+        }
+        tamBoy = tamBoy + debito;
+    }
+
+    public void geraCaminhao(){
+        int x,y,val,debito = 0;
+        for (int i = 0; i < tamBino; i++){
+            x = bino[i].getX();
+            y = bino[i].getY();
+            if(mapa[x][y] == 2){
+                if(bino[i].getPosicaoAntiga() == 0){
+                    but.setX();
+                    but.setY();
+                    bino[tamBino] = new Caminhao(but.getX(), but.getY());
+                    bino[i].setPosicaoAntiga(2);
+                    debito++;
+                }
+            }
+            else{
+                bino[i].setPosicaoAntiga(mapa[bino[i].getX()][bino[i].getY()]);
+            }
+        }
+        tamBino = tamBino + debito;
+    }
+
+    public int numeroDmapa(int x,int y){
+        int num = mapa[x][y];
+        return num;
+    }
+
+    public void numeros(){
+        System.out.println("Motos: " + tamBoy);
+        System.out.println("Carros: " + tamUno);
+        System.out.println("Caminhoes: " + tamBino);
+    }
+
+    ///[30][60]
     private int mapa[][];
     private int tamX = 30;
     private int tamY = 60;
+    private int tamUno;
+    private int tamBoy;
+    private int tamBino;
+    private Veiculo but = new Veiculo();
+    private Carro[] uno = new Carro[1800];
+    private Moto[] boy = new Moto[1800];
+    private Caminhao[] bino = new Caminhao[1800];
 }
 
     /*
