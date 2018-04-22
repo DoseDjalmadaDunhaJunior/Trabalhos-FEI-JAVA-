@@ -3,79 +3,46 @@ import java.util.Random;
 
 public class Mundo {
     public Mundo() {
-        zera();
+        zeraMundo();
         primeiros();
         desenhaMundo(mapa);
     }
-///é executado no loop do main
-    public void start(){
+
+    ///é executado no loop do main
+    public void start() {
         colisao();
         geraVeiculos();
         mudaMundo();
         desenhaMundo(mapa);
         numeros();
-        zera();
+        zeraMundo();
     }
-///alem de gerar o mapa inicialmente ela reseta para o desenho original apos cada loop
-    public void zera(){
-        int mapaAux[][] =
-                {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
-        mapa = mapaAux;
 
-    }
-///cria os primeiros carros e indica o tamanho inicial dos vetores de cada veiculo
-    public void primeiros(){
-        for(int i = 0; i < uno.length; i++) {
+    ///cria os primeiros carros e indica o tamanho inicial dos vetores de cada veiculo
+    public void primeiros() {
+        for (int i = 0; i < uno.length; i++) {
             but.setX();
             but.setY();
             uno[i] = new Carro(but.getX(), but.getY());
             uno[i].setVelocidade(0);
             but.setX();
             but.setY();
-            boy[i] = new Moto(but.getX(),but.getY());
+            boy[i] = new Moto(but.getX(), but.getY());
             boy[i].setVelocidade(0);
             but.setX();
             but.setY();
-            bino[i] = new Caminhao(but.getX(),but.getY());
+            bino[i] = new Caminhao(but.getX(), but.getY());
             bino[i].setVelocidade(0);
         }
 
-        for(int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             uno[i].setVelocidade(2);
             boy[i].setVelocidade(3);
             bino[i].setVelocidade(1);
         }
     }
-///desenha o mapa substituindo cada numero por uma cor
+
+    ///desenha o mapa substituindo cada numero por uma cor
     public void desenhaMundo(int vet[][]) {
         for (int i = 0; i < tamX; i++) {
             for (int j = 0; j < tamY; j++) {
@@ -109,24 +76,26 @@ public class Mundo {
             System.out.print("\n");
         }
     }
-///anda com cada veiculo
+
+    ///anda com cada veiculo
     public void mudaMundo() {
-        for (int i = 0; uno[i].getVelocidade() != 0; i++){
+        for (int i = 0; uno[i].getVelocidade() != 0; i++) {
             uno[i].move(uno[i]);
             mapa[uno[i].getX()][uno[i].getY()] = 8;
         }
-        for (int i = 0; boy[i].getVelocidade() != 0; i++){
+        for (int i = 0; boy[i].getVelocidade() != 0; i++) {
             boy[i].move(boy[i]);
             mapa[boy[i].getX()][boy[i].getY()] = 7;
         }
-        for (int i = 0; bino[i].getVelocidade() != 0; i++){
+        for (int i = 0; bino[i].getVelocidade() != 0; i++) {
             bino[i].move(bino[i]);
             mapa[bino[i].getX()][bino[i].getY()] = 9;
         }
 
     }
-///o mapa vazio
-    public void zeraMundo(){
+
+    ///o mapa vazio
+    public void zeraMundo() {
         int mapaAux[][] =
                 {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                         {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -160,13 +129,15 @@ public class Mundo {
                         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
         mapa = mapaAux;
     }
-///chama as funcoes que detectam e trabalham com a colisao
+
+    ///chama as funcoes que detectam e trabalham com a colisao
     public void colisao() {
         bateCarro();
         bateCaminhao();
         bateMoto();
     }
-///elimina o carro que colide
+
+    ///elimina o carro que colide
     public void bateCarro() {
         int gg = 0, pp = 0;
         while (uno[gg].getVelocidade() != 0) {
@@ -175,7 +146,7 @@ public class Mundo {
         while (bino[pp].getVelocidade() != 0) {
             pp++;
         }
-        //carro batendo em caminhao
+        ///carro -> caminhao
         for (int i = 0; i < gg; i++) {
             for (int j = 0; j < pp; j++) {
                 if ((uno[i].getX() == bino[j].getX()) && (uno[i].getY() == bino[j].getY())) {
@@ -222,9 +193,10 @@ public class Mundo {
             }
         }
     }
-///elimina o caminhao que colide
+
+    ///elimina o caminhao que colide
     public void bateCaminhao() {
-        //caminhao -> moto
+        ///caminhao -> moto
         int gg = 0, pp = 0;
         while (bino[gg].getVelocidade() != 0) {
             gg++;
@@ -262,8 +234,9 @@ public class Mundo {
             }
         }
     }
-///elimina a moto que colide
-    public void bateMoto(){
+
+    ///elimina a moto que colide
+    public void bateMoto() {
         ///moto -> moto
         int gg = 0, pp = 0;
         while (boy[gg].getVelocidade() != 0) {
@@ -285,35 +258,37 @@ public class Mundo {
             }
         }
     }
-///chama as funcoes que geram novos veiculos que passam pelas fabricas
+
+    ///chama as funcoes que geram novos veiculos que passam pelas fabricas
     public void geraVeiculos() {
         geraMoto();
         geraCarro();
         geraCaminhao();
     }
-///gera novos carros
-    public void geraCarro(){
+
+    ///gera novos carros
+    public void geraCarro() {
         int tamanho = 0;
-        while (uno[tamanho].getVelocidade() != 0){
+        while (uno[tamanho].getVelocidade() != 0) {
             tamanho++;
         }
         Random meu = new Random();
-        for (int i = 0; i < tamanho; i++){
-            if(mapa[uno[i].getX()][uno[i].getY()] == 2){
-                if(uno[i].getPosicaoAntiga() == 0){
+        for (int i = 0; i < tamanho; i++) {
+            if (mapa[uno[i].getX()][uno[i].getY()] == 2) {
+                if (uno[i].getPosicaoAntiga() == 0) {
                     uno[tamanho].setX(meu.nextInt(29));
                     uno[tamanho].setY(meu.nextInt(29));
                     uno[tamanho].setVelocidade(2);
                     uno[tamanho].setPosicaoAntiga(0);
                     uno[i].setPosicaoAntiga(2);
                 }
-            }
-            else{
+            } else {
                 uno[i].setPosicaoAntiga(mapa[uno[i].getX()][uno[i].getY()]);
             }
         }
     }
-///gera novas motos
+
+    ///gera novas motos
     public void geraMoto() {
         int tamanho = 0;
         while (boy[tamanho].getVelocidade() != 0) {
@@ -334,8 +309,9 @@ public class Mundo {
             }
         }
     }
-///gera novos caminhoes
-    public void geraCaminhao(){
+
+    ///gera novos caminhoes
+    public void geraCaminhao() {
         int tamanho = 0;
         while (bino[tamanho].getVelocidade() != 0) {
             tamanho++;
@@ -356,15 +332,16 @@ public class Mundo {
         }
     }
 
-    public void numeros(){
+    ///legenda e quantidade dos veiculos
+    public void numeros() {
         int tamBoy = 0, tamUno = 0, tamBino = 0;
-        while (uno[tamUno].getVelocidade() != 0){
+        while (uno[tamUno].getVelocidade() != 0) {
             tamUno++;
         }
-        while (boy[tamBoy].getVelocidade() != 0){
+        while (boy[tamBoy].getVelocidade() != 0) {
             tamBoy++;
         }
-        while (bino[tamBino].getVelocidade() != 0){
+        while (bino[tamBino].getVelocidade() != 0) {
             tamBino++;
         }
         ///meramente uma legenda

@@ -2,14 +2,14 @@ package com.company;
 import java.util.Random;
 
 public class Veiculo{
+    ///inicia o veiculo com todos os privates zerados
     public Veiculo(){
         x = 0;
         y = 0;
         velocidade = 0;
-        fabrica = false;
         cor = null;
     }
-
+    ///inicia os veiculos ja com alguns privates iniciados e dado valores
     public Veiculo(int xx,int yy, String modelo,int aux) {
         x = xx;
         y = yy;
@@ -25,69 +25,61 @@ public class Veiculo{
             velocidade = 1;
         }
     }
-
-    public void id() {
-        int n;
-        if(cor == "uno"){
-            n = 8;
-        }
-        else if(cor == "bino"){
-            n = 9;
-        }
-        else if(cor == "moto"){
-            n = 7;
-        }
-        else{
-            n = 0;
-        }
-    }
-
+    ///retorna um valor para Y que no caso sera a posicao
     public int getY(){
         return y;
     }
 
+    ///salva um valor para Y que no caso sera a posicao
+    public void setY(int p){
+        y = p;
+    }
+
+    ///retorna um valor para X que no caso sera a posicao
     public int getX(){
         return x;
     }
 
+    ///salva um valor para X que no caso sera a posicao
+    public void setX(int p){
+        x = p;
+    }
+
+    ///salva um valor para X que no caso sera a posicao porem aleatorio
     public void setX(){
         Random meu = new Random();
         x = meu.nextInt(30);
     }
 
+    ///salva um valor para Y que no caso sera a posicao posicao porem aleatorio
     public void setY(){
         Random meu = new Random();
         y = meu.nextInt(60);
     }
 
-    public void setX(int p){
-        x = p;
-    }
-
-    public void setY(int p){
-        y = p;
-    }
-
-    public void setVelocidade(int n){
-        velocidade = n;
-    }
-
+    ///retorna a velocidade
     public int getVelocidade(){
         return velocidade;
     }
 
-    public void setPosicaoAntiga(int pn){
-        posicaoAntiga = pn;
+    ///salva a velocidade
+    public void setVelocidade(int n){
+        velocidade = n;
     }
 
+    ///retorna a velocidade antiga
     public int getPosicaoAntiga(){
     return posicaoAntiga;
+    }
+
+    ///salva a posicao antiga
+    public void setPosicaoAntiga(int pn){
+        posicaoAntiga = pn;
     }
 
     private int posicaoAntiga;
     private int y;
     private int x;
     private int velocidade;
-    private boolean fabrica;
     private String cor;
 }
