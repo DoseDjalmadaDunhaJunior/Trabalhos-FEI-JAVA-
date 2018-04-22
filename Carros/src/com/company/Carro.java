@@ -47,5 +47,5 @@ public class Carro extends Veiculo {
             a.setY(y);
         }
     }
-    //
+
 }
