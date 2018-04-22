@@ -47,4 +47,5 @@ public class Caminhao  extends Veiculo {
             a.setY(y);
         }
     }
+    //
 }

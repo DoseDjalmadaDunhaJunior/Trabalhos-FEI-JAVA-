@@ -82,4 +82,5 @@ public class Veiculo{
     private int x;
     private int velocidade;
     private String cor;
+    //
 }

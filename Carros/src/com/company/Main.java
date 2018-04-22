@@ -11,6 +11,7 @@ public class Main {
             } catch (InterruptedException ex) {
                 a.start();
                 a.zeraMundo();
+                //
             }
         }
     }

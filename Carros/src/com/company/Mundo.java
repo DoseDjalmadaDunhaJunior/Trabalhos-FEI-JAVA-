@@ -50,15 +50,18 @@ public class Mundo {
                 if (vet[i][j] == 9 || vet[i][j] == 8 || vet[i][j] == 7) {
                     ///caminhoes
                     if (vet[i][j] == 9) {
-                        System.out.print("\u001b[44m \u001b[0m");
+                        //System.out.print("\u001b[44m \u001b[0m");
+                        System.out.print("\u001b[43;1m \u001b[0m");
                     }
                     ///carros
                     if (vet[i][j] == 8) {
-                        System.out.print("\u001b[43;1m \u001b[0m");
+                        //System.out.print("\u001b[43;1m \u001b[0m");
+                        System.out.print("\u001b[41;1m \u001b[0m");
                     }
                     ///motos
                     if (vet[i][j] == 7) {
-                        System.out.print("\u001b[41;1m \u001b[0m");
+                        //System.out.print("\u001b[41;1m \u001b[0m");
+                        System.out.print("\u001b[44m \u001b[0m");
                     }
                 } else if (vet[i][j] == 1 || vet[i][j] == 2) {
                     if (vet[i][j] == 1) {
@@ -346,9 +349,9 @@ public class Mundo {
         }
         ///meramente uma legenda
         System.out.print("-----LEGENDA-----\n" +
-                "MOTOS = \u001b[41;1m \u001b[0m  Motos: " + tamBoy +
-                "\nCAMINHOES = \u001b[44m \u001b[0m  Caminhoes: " + tamBino +
-                "\nCARROS = \u001b[43;1m \u001b[0m  Carros: " + tamUno);
+                "MOTOS = \u001b[44m \u001b[0m  Motos: " + tamBoy +
+                "\nCAMINHOES = \u001b[43;1m \u001b[0m  Caminhoes: " + tamBino +
+                "\nCARROS = \u001b[41;1m \u001b[0m  Carros: " + tamUno);
     }
 
     ///[30][60]
@@ -359,4 +362,5 @@ public class Mundo {
     private Carro[] uno = new Carro[1800];
     private Moto[] boy = new Moto[1800];
     private Caminhao[] bino = new Caminhao[1800];
+    //
 }
