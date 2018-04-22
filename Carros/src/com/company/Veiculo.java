@@ -68,6 +68,14 @@ public class Veiculo{
         y = p;
     }
 
+    public void setVelocidade(int n){
+        velocidade = n;
+    }
+
+    public int getVelocidade(){
+        return velocidade;
+    }
+
     public void setPosicaoAntiga(int pn){
         posicaoAntiga = pn;
     }

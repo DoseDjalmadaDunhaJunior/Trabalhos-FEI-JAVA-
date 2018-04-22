@@ -7,6 +7,10 @@ public class Carro extends Veiculo{
         super(x, y, "uno",0);
         forcaDesenha();
     }
+    public Carro() {
+        super(0, 0, "uno",0);
+        forcaDesenha();
+    }
 
     public void forcaDesenha(){
         super.id();

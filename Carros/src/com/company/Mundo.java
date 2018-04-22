@@ -1,6 +1,5 @@
 package com.company;
-import java.awt.Color;
-import java.util.ArrayList;
+import java.util.Random;
 
 public class Mundo {
     public Mundo() {
@@ -8,52 +7,17 @@ public class Mundo {
         primeiros();
         desenhaMundo(mapa);
     }
-
+///é executado no loop do main
     public void start(){
-        //numeros();
-        zera();
         colisao();
-        geraVeiculos();
+        //geraVeiculos();
         mudaMundo();
         desenhaMundo(mapa);
-
+        numeros();
+        zera();
     }
-
+///alem de gerar o mapa inicialmente ela reseta para o desenho original apos cada loop
     public void zera(){
-        /*
-        int mapaAux[][] =
-                {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
-        mapa = mapaAux;
-        */
         int mapaAux[][] =
                 {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                         {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -88,49 +52,54 @@ public class Mundo {
         mapa = mapaAux;
 
     }
-
+///cria os primeiros carros e indica o tamanho inicial dos vetores de cada veiculo
     public void primeiros(){
-        for(int i = 0; i < 10; i++) {
+        for(int i = 0; i < uno.length; i++) {
             but.setX();
             but.setY();
             uno[i] = new Carro(but.getX(), but.getY());
+            uno[i].setVelocidade(0);
             but.setX();
             but.setY();
             boy[i] = new Moto(but.getX(),but.getY());
+            boy[i].setVelocidade(0);
             but.setX();
             but.setY();
             bino[i] = new Caminhao(but.getX(),but.getY());
+            bino[i].setVelocidade(0);
         }
-        tamBino = 10;
-        tamUno = 10;
-        tamBoy = 10;
+
+        for(int i = 0; i < 10; i++) {
+            uno[i].setVelocidade(2);
+            boy[i].setVelocidade(3);
+            bino[i].setVelocidade(1);
+        }
     }
-
+///desenha o mapa substituindo cada numero por uma cor
     public void desenhaMundo(int vet[][]) {
-
         for (int i = 0; i < tamX; i++) {
             for (int j = 0; j < tamY; j++) {
                 ///borda
                 if (vet[i][j] == 9 || vet[i][j] == 8 || vet[i][j] == 7) {
                     ///caminhoes
                     if (vet[i][j] == 9) {
-                        System.out.print("R");
+                        System.out.print("\u001b[44m \u001b[0m");
                     }
                     ///carros
                     if (vet[i][j] == 8) {
-                        System.out.print("C");
+                        System.out.print("\u001b[43;1m \u001b[0m");
                     }
                     ///motos
                     if (vet[i][j] == 7) {
-                        System.out.print("M");
+                        System.out.print("\u001b[41;1m \u001b[0m");
                     }
                 } else if (vet[i][j] == 1 || vet[i][j] == 2) {
                     if (vet[i][j] == 1) {
-                        System.out.print("ø");
+                        System.out.print("\u001b[47;1m \u001b[0m");
                     }
                     ///fabricas
                     if (vet[i][j] == 2) {
-                        System.out.print("X");
+                        System.out.print("\u001b[42;1m \u001b[0m");
                     }
                 } else {
                     ///espaco em branco
@@ -140,36 +109,23 @@ public class Mundo {
             System.out.print("\n");
         }
     }
-
+///anda com cada veiculo
     public void mudaMundo() {
-        int c,cam,m;
-        c = tamUno;
-        System.out.println("tamanho caro " + c);
-        for (int i = 0; i < tamUno-1; i++){
-            System.out.println("x carro " + uno[i].getX());
-            System.out.println("y carro " + uno[i].getY());
+        for (int i = 0; uno[i].getVelocidade() != 0; i++){
             uno[i].move(uno[i]);
             mapa[uno[i].getX()][uno[i].getY()] = 8;
         }
-        m = tamBoy;
-        System.out.println("tamanho moto " + m);
-        for (int i = 0; i < tamBoy-1; i++){
-            System.out.println("x moto " + boy[i].getX());
-            System.out.println("y moto " + boy[i].getY());
+        for (int i = 0; boy[i].getVelocidade() != 0; i++){
             boy[i].move(boy[i]);
             mapa[boy[i].getX()][boy[i].getY()] = 7;
         }
-        cam = tamBino;
-        System.out.println("tamanho caminhao " + cam);
-        for (int i = 0; i < tamBino-1; i++){
-            System.out.println("x caminhao " + bino[i].getX());
-            System.out.println("y caminhao " + bino[i].getY());
+        for (int i = 0; bino[i].getVelocidade() != 0; i++){
             bino[i].move(bino[i]);
             mapa[bino[i].getX()][bino[i].getY()] = 9;
         }
 
     }
-
+///o mapa vazio
     public void zeraMundo(){
         int mapaAux[][] =
                 {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -204,273 +160,226 @@ public class Mundo {
                         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
         mapa = mapaAux;
     }
-
+///chama as funcoes que detectam e trabalham com a colisao
     public void colisao() {
         bateCarro();
         bateCaminhao();
         bateMoto();
     }
-
+///elimina o carro que colide
     public void bateCarro() {
-        int min, max, debito = 0;
-        if ((tamUno-1) > (tamBino-1)) {
-            min = (tamUno-1);
-            max = (tamBino-1);
-        } else {
-            min = (tamBino-1);
-            max = (tamUno-1);
+        int gg = 0, pp = 0;
+        while (uno[gg].getVelocidade() != 0) {
+            gg++;
+        }
+        while (bino[pp].getVelocidade() != 0) {
+            pp++;
         }
         //carro batendo em caminhao
-        for (int i = 0; i < min; i++) {
-            for (int j = 0; j < max; j++) {
-                System.out.println("carro tam " + tamUno);
-                System.out.println("caminhao tam " + tamBino);
-                System.out.println("carro x " + uno[i].getX());
-                System.out.println("carro y " + uno[i].getY());
-                System.out.println("caminhao x " + bino[i].getX());
-                System.out.println("caminhao y " + bino[i].getY());
-                if ((uno[i].getX() == bino[j].getX()) && (uno[i].getX() == bino[j].getY())) {
-                    Carro a, b;
-                    a = uno[i];
-                    b = uno[(tamUno - 1)];
-                    uno[i] = b;
-                    uno[(tamUno - 1)] = a;
-                    debito++;
+        for (int i = 0; i < gg; i++) {
+            for (int j = 0; j < pp; j++) {
+                if ((uno[i].getX() == bino[j].getX()) && (uno[i].getY() == bino[j].getY())) {
+                    uno[i].setVelocidade(0);
                 }
             }
         }
-        tamUno = tamUno - debito;
-
         //carro -> moto
-        if ((tamUno-1) > (tamBoy-1)) {
-            min = tamUno;
-            max = tamBoy;
-        } else {
-            min = tamBoy;
-            max = tamUno;
+        gg = 0;
+        pp = 0;
+        while (uno[gg].getVelocidade() != 0) {
+            gg++;
         }
-        debito = 0;
-        for (int i = 0; i < min; i++) {
-            for (int j = 0; j < max; j++) {
-                if ((uno[j].getX() == boy[i].getX()) && (uno[j].getX() == boy[i].getY())) {
-                    Moto a, b;
-                    a = boy[i];
-                    b = boy[(tamBoy - 1)];
-                    boy[i] = b;
-                    boy[(tamBoy - 1)] = a;
-                    debito++;
+        while (boy[pp].getVelocidade() != 0) {
+            pp++;
+        }
+        for (int i = 0; i < gg; i++) {
+            for (int j = 0; j < pp; j++) {
+                if ((uno[i].getX() == boy[j].getX()) && (uno[i].getY() == boy[j].getY())) {
+                    boy[i].setVelocidade(0);
                 }
             }
         }
-
-        tamBoy = tamBoy - debito;
         //carro -> carro
-        min = tamUno;
-        max = min;
-        debito = 0;
-        for (int i = 0; i < min; i++) {
-            for (int j = 0; j < max; j++) {
+        pp = 0;
+        gg = 0;
+        while (uno[gg].getVelocidade() != 0) {
+            gg++;
+        }
+        while (uno[pp].getVelocidade() != 0) {
+            pp++;
+        }
+        for (int i = 0; i < gg; i++) {
+            for (int j = 0; j < pp; j++) {
+
                 if (i == j) {
 
                 } else {
-                    if ((uno[i].getX() == uno[j].getX()) && (uno[i].getX() == uno[j].getY())) {
-                        Carro a1, a2, b1, b2;
-                        a1 = uno[i];
-                        a2 = uno[(tamUno - 1)];
-                        uno[i] = a2;
-                        uno[(tamUno - 1)] = a1;
-                        b1 = uno[j];
-                        b2 = uno[(tamUno - 2)];
-                        uno[j] = b2;
-                        uno[(tamUno - 2)] = b1;
-                        debito+=2;
+                    if ((uno[i].getX() == uno[j].getX()) && (uno[i].getY() == uno[j].getY())) {
+                        uno[i].setVelocidade(0);
+                        uno[j].setVelocidade(0);
                     }
                 }
             }
         }
-        tamUno = tamUno - debito;
     }
-
+///elimina o caminhao que colide
     public void bateCaminhao() {
-        int min, max, debito = 0;
         //caminhao -> moto
-        if (tamBino > tamBoy) {
-            min = tamBino;
-            max = tamBoy;
-        } else {
-            min = tamBoy;
-            max = tamBino;
+        int gg = 0, pp = 0;
+        while (bino[gg].getVelocidade() != 0) {
+            gg++;
         }
-        for (int i = 0; i < min; i++) {
-            for (int j = 0; j < max; j++) {
+        while (boy[pp].getVelocidade() != 0) {
+            pp++;
+        }
+        for (int i = 0; i < gg; i++) {
+            for (int j = 0; j < pp; j++) {
                 if ((bino[j].getX() == boy[i].getX()) && (bino[j].getX() == boy[i].getY())) {
-                    Moto a, b;
-                    a = boy[i];
-                    b = boy[(tamBoy - 1)];
-                    boy[i] = b;
-                    boy[(tamBoy - 1)] = a;
-                    debito++;
+                    boy[i].setVelocidade(0);
                 }
             }
         }
-
-        tamBoy = tamBoy - debito;
         //caminhao -> caminhao
-        min = tamBino;
-        max = min;
-        debito = 0;
-        for (int i = 0; i < min; i++) {
-            for (int j = 0; j < max; j++) {
+        gg = 0;
+        pp = 0;
+
+        while (bino[gg].getVelocidade() != 0) {
+            gg++;
+        }
+        while (bino[pp].getVelocidade() != 0) {
+            pp++;
+        }
+        for (int i = 0; i < pp; i++) {
+            for (int j = 0; j < gg; j++) {
                 if (i == j) {
 
                 } else {
                     if ((bino[i].getX() == bino[j].getX()) && (bino[i].getX() == bino[j].getY())) {
-                        Caminhao a1, a2, b1, b2;
-                        a1 = bino[i];
-                        a2 = bino[(tamBino - 1)];
-                        bino[i] = a2;
-                        bino[(tamBino - 1)] = a1;
-                        b1 = bino[j];
-                        b2 = bino[(tamBino - 2)];
-                        bino[j] = b2;
-                        bino[(tamBino - 2)] = b1;
-                        debito+=2;
+                        bino[i].setVelocidade(0);
+                        bino[j].setVelocidade(0);
                     }
                 }
             }
         }
-        tamBino = tamBino - debito;
     }
-
+///elimina a moto que colide
     public void bateMoto(){
-        int debito = 0;
-        for (int i = 0; i < tamBoy; i++) {
-            for (int j = 0; j < tamBoy; j++) {
+        ///moto -> moto
+        int gg = 0, pp = 0;
+        while (boy[gg].getVelocidade() != 0) {
+            gg++;
+        }
+        while (boy[pp].getVelocidade() != 0) {
+            pp++;
+        }
+        for (int i = 0; i < pp; i++) {
+            for (int j = 0; j < gg; j++) {
                 if (i == j) {
 
                 } else {
                     if ((boy[i].getX() == boy[j].getX()) && (boy[i].getX() == boy[j].getY())) {
-                        Moto a1, a2, b1, b2;
-                        a1 = boy[i];
-                        a2 = boy[(tamBoy - 1)];
-                        boy[i] = a2;
-                        boy[(tamBoy - 1)] = a1;
-                        b1 = boy[j];
-                        b2 = boy[(tamBoy - 2)];
-                        boy[j] = b2;
-                        boy[(tamBoy - 2)] = b1;
-                        debito+=2;
+                        boy[i].setVelocidade(0);
+                        boy[j].setVelocidade(0);
                     }
                 }
             }
         }
-        tamBoy = tamBoy - debito;
     }
-
+///chama as funcoes que geram novos veiculos que passam pelas fabricas
     public void geraVeiculos() {
         geraMoto();
         geraCarro();
         geraCaminhao();
     }
-
+///gera novos carros
     public void geraCarro(){
-        int x,y,debito = 0;
-        for (int i = 0; i < tamUno; i++){
-            x = uno[i].getX();
-            y = uno[i].getY();
-            if(mapa[x][y] == 2){
+        int tamanho = 0;
+        while (uno[tamanho].getVelocidade() != 0){
+            tamanho++;
+        }
+        Random meu = new Random();
+        for (int i = 0; i < tamanho; i++){
+            if(mapa[uno[i].getX()][uno[i].getY()] == 2){
                 if(uno[i].getPosicaoAntiga() == 0){
-                    but.setX();
-                    but.setY();
-                    uno[tamUno] = new Carro(but.getX(), but.getY());
+                    uno[tamanho].setX(meu.nextInt(29));
+                    uno[tamanho].setY(meu.nextInt(29));
+                    uno[tamanho].setVelocidade(2);
+                    uno[tamanho].setPosicaoAntiga(0);
                     uno[i].setPosicaoAntiga(2);
-                    debito++;
                 }
             }
             else{
                 uno[i].setPosicaoAntiga(mapa[uno[i].getX()][uno[i].getY()]);
             }
         }
-        tamUno = tamUno + debito;
     }
-
-    public void geraMoto(){
-        int x,y,debito = 0;
-        for (int i = 0; i < tamBoy; i++){
-            x = boy[i].getX();
-            y = boy[i].getY();
-            if(mapa[x][y] == 2){
-                if(boy[i].getPosicaoAntiga() == 0){
-                    but.setX();
-                    but.setY();
-                    boy[tamBoy] = new Moto(but.getX(), but.getY());
+///gera novas motos
+    public void geraMoto() {
+        int tamanho = 0;
+        while (boy[tamanho].getVelocidade() != 0) {
+            tamanho++;
+        }
+        Random meu = new Random();
+        for (int i = 0; i < tamanho; i++) {
+            if (mapa[boy[i].getX()][boy[i].getY()] == 2) {
+                if (boy[i].getPosicaoAntiga() == 0) {
+                    boy[tamanho].setX(meu.nextInt(29));
+                    boy[tamanho].setY(meu.nextInt(29));
+                    boy[tamanho].setVelocidade(3);
+                    boy[tamanho].setPosicaoAntiga(0);
                     boy[i].setPosicaoAntiga(2);
-                    debito++;
                 }
-            }
-            else{
+            } else {
                 boy[i].setPosicaoAntiga(mapa[boy[i].getX()][boy[i].getY()]);
             }
         }
-        tamBoy = tamBoy + debito;
     }
-
+///gera novos caminhoes
     public void geraCaminhao(){
-        int x,y,val,debito = 0;
-        for (int i = 0; i < tamBino; i++){
-            x = bino[i].getX();
-            y = bino[i].getY();
-            if(mapa[x][y] == 2){
-                if(bino[i].getPosicaoAntiga() == 0){
-                    but.setX();
-                    but.setY();
-                    bino[tamBino] = new Caminhao(but.getX(), but.getY());
+        int tamanho = 0;
+        while (bino[tamanho].getVelocidade() != 0) {
+            tamanho++;
+        }
+        Random meu = new Random();
+        for (int i = 0; i < tamanho; i++) {
+            if (mapa[bino[i].getX()][bino[i].getY()] == 2) {
+                if (bino[i].getPosicaoAntiga() == 0) {
+                    bino[tamanho].setX(meu.nextInt(29));
+                    bino[tamanho].setY(meu.nextInt(29));
+                    bino[tamanho].setVelocidade(1);
+                    bino[tamanho].setPosicaoAntiga(0);
                     bino[i].setPosicaoAntiga(2);
-                    debito++;
                 }
-            }
-            else{
+            } else {
                 bino[i].setPosicaoAntiga(mapa[bino[i].getX()][bino[i].getY()]);
             }
         }
-        tamBino = tamBino + debito;
-    }
-
-    public int numeroDmapa(int x,int y){
-        int num = mapa[x][y];
-        return num;
     }
 
     public void numeros(){
-        System.out.println("Motos: " + tamBoy);
-        System.out.println("Carros: " + tamUno);
-        System.out.println("Caminhoes: " + tamBino);
+        int tamBoy = 0, tamUno = 0, tamBino = 0;
+        while (uno[tamUno].getVelocidade() != 0){
+            tamUno++;
+        }
+        while (boy[tamBoy].getVelocidade() != 0){
+            tamBoy++;
+        }
+        while (bino[tamBino].getVelocidade() != 0){
+            tamBino++;
+        }
+        ///meramente uma legenda
+        System.out.print("-----LEGENDA-----\n" +
+                "MOTOS = \u001b[41;1m \u001b[0m  Motos: " + tamBoy +
+                "\nCAMINHOES = \u001b[44m \u001b[0m  Caminhoes: " + tamBino +
+                "\nCARROS = \u001b[43;1m \u001b[0m  Carros: " + tamUno);
     }
 
     ///[30][60]
     private int mapa[][];
     private int tamX = 30;
     private int tamY = 60;
-    private int tamUno;
-    private int tamBoy;
-    private int tamBino;
     private Veiculo but = new Veiculo();
     private Carro[] uno = new Carro[1800];
     private Moto[] boy = new Moto[1800];
     private Caminhao[] bino = new Caminhao[1800];
 }
-
-    /*
-    public Color getColor (String text){
-        if (text.contains("<nome>")) {
-            return Color.blue;
-        } else if (text.contains("<imports>")) {
-            return Color.RED;
-        } else if (text.contains("<valor>")) {
-            return new Color(0, 140, 0);
-        } else if (text.contains("<tipo>")) {
-            return new Color(0, 0, 150);
-        }
-        return Color.black;
-        }
-        */
