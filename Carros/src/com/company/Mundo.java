@@ -10,7 +10,7 @@ public class Mundo {
 ///é executado no loop do main
     public void start(){
         colisao();
-        //geraVeiculos();
+        geraVeiculos();
         mudaMundo();
         desenhaMundo(mapa);
         numeros();
