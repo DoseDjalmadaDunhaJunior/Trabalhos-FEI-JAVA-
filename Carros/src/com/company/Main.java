@@ -1,5 +1,5 @@
 /**
-* @José Djalma da Cunha Júnior
+* @ José Djalma da Cunha Júnior
 * CC3642
 *    o proposito desse programa é
 *    ganhar nota de P1

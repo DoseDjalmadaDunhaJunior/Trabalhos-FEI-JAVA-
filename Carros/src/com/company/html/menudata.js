@@ -22,11 +22,13 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 for the JavaScript code in this file
 */
 var menudata={children:[
-{text:"Página Principal",url:"index.html"},
+{text:"Main Page",url:"index.html"},
+{text:"Namespaces",url:"namespaces.html",children:[
+{text:"Namespace List",url:"namespaces.html"}]},
 {text:"Classes",url:"annotated.html",children:[
-{text:"Lista de Classes",url:"annotated.html"},
-{text:"Índice dos Componentes",url:"classes.html"},
-{text:"Hierarquia de Classes",url:"hierarchy.html"},
-{text:"Membros de classe",url:"functions.html",children:[
-{text:"Todos",url:"functions.html"},
-{text:"Funções",url:"functions_func.html"}]}]}]}
+{text:"Class List",url:"annotated.html"},
+{text:"Class Index",url:"classes.html"},
+{text:"Class Hierarchy",url:"hierarchy.html"},
+{text:"Class Members",url:"functions.html",children:[
+{text:"All",url:"functions.html"},
+{text:"Functions",url:"functions_func.html"}]}]}]}
